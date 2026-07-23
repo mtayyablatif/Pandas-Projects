@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import seaborn as sns
+import matplotlib.pyplot as plt
+
 
 data = sns.load_dataset('titanic')
 
@@ -27,3 +29,13 @@ print(survivors_names.head())
 # Negation with ~
 non_survivors = data[~(data['survived'] == 1)]
 print("Non-survivors:", len(non_survivors))
+
+import matplotlib.pyplot as plt
+
+groups = ['Children (<18)', 'Adults (18+)']
+rates = [children['survived'].mean(), data[data['age'] >= 18]['survived'].mean()]
+
+plt.bar(groups, rates, color=['skyblue', 'gray'])
+plt.title('Survival Rate: Children vs Adults')
+plt.ylabel('Survival Rate')
+plt.show()

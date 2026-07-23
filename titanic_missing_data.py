@@ -1,6 +1,7 @@
 import seaborn as sns
 import pandas as pd
-import numpy as np
+# import numpy as np
+import matplotlib.pyplot as plt
 
 data = sns.load_dataset('titanic')
 
@@ -26,3 +27,8 @@ data['embark_town'] = data['embark_town'].fillna(data['embark_town'].mode()[0])
 
 #check to see if the data is cleaned now
 print('cleaned data', data.isna().sum())
+
+missing_count.plot(kind = 'bar', color = 'salmon')
+plt.title('Missing Values by Column')
+plt.ylabel('Count')
+plt.show()

@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 data = sns.load_dataset('titanic')
 data['age'] = data['age'].fillna(data['age'].median())
@@ -27,3 +28,11 @@ print(data.groupby('pclass')['age'].count())  # counts non-null ages
 survival_by_class = data.groupby('pclass')['survived'].mean().reset_index()
 print(survival_by_class)
 
+import matplotlib.pyplot as plt
+
+survival_by_sex_class = data.groupby(['sex', 'pclass'])['survived'].mean().unstack()
+survival_by_sex_class.plot(kind='bar')
+plt.title('Survival Rate by Sex and Class')
+plt.ylabel('Survival Rate')
+plt.xticks(rotation=0)
+plt.show()
