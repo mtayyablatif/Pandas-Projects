@@ -8,9 +8,12 @@ data['age'] = data['age'].fillna(data['age'].median())
 # data_var_name.groupby('required_column')[what_we_need].func_we_need_to_perform()
 print(data.groupby('sex')['survived'].mean())
 
+#multiple categories grouped
 print(data.groupby(['sex', 'pclass'])['survived'].mean())
 
 print(data.groupby('pclass')['age'].agg(['min', 'max', 'mean', 'count']))
+
+print(data.groupby('pclass')['age'].max())
 
 print(data['pclass'].value_counts())
 
